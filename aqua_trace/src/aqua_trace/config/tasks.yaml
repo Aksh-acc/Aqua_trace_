@@ -1,0 +1,30 @@
+image_diagnosis_task:
+  description: >
+    Analyze the coral image provided at {image_source} using the Coral Bleaching Classifier tool. 
+    Use the tool to classify whether the coral is healthy (CORAL) or bleached (CORAL_BL).
+    Report the classification result, confidence score, and estimated bleaching severity.
+    If bleaching is detected, estimate the percentage of the reef affected based on the analysis.
+  expected_output: >
+    A detailed diagnosis of the coral health including:
+    - Classification result (Healthy/Bleached)
+    - Confidence percentage
+    - Bleaching severity level (None/Low/Medium/High)
+    - Estimated bleaching percentage
+    - Summary of coral health status
+
+environmental_assessment_task:
+  description: >
+    Using the SSTDataFetcherTool, get the current sea surface temperature for 
+    lat: {latitude} and lon: {longitude}. Compare this with the visual diagnosis.
+  expected_output: >
+    An analysis of the thermal stress at the specific location.
+
+user_response_task:
+  description: >
+    Draft a friendly WhatsApp response to the user. Include:
+    1. The health diagnosis.
+    2. Any precautions they should take.
+    3. Use the GamificationManagerTool to calculate their points and badges based on the data.
+    4. Mention their current rank or unlocked coupons.
+  expected_output: >
+    A ready-to-send text message optimized for WhatsApp.

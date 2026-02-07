@@ -1,0 +1,18 @@
+**Detailed Diagnosis of Coral Health:**
+
+The image displays a clear and severe case of coral bleaching affecting a significant portion of the visible reef.
+
+**1. Presence of Coral Bleaching:**
+Yes, coral bleaching is unequivocally present and widespread throughout the image. There are striking areas of stark white coral skeleton, indicative of severe bleaching where the coral tissue has either completely expelled its symbiotic algae (zooxanthellae) or has recently died, exposing the underlying white calcium carbonate structure. Other areas show significant paling, suggesting partial loss of zooxanthellae and ongoing stress.
+
+**2. Estimated Percentage of Reef Affected:**
+Based on the visible coral cover within the image, approximately **70-80%** of the live coral colonies are exhibiting signs of bleaching. This ranges from moderate paling to severe, complete bleaching with extensive areas of exposed white skeleton. The dominant branching coral species in the foreground is particularly heavily impacted.
+
+**3. Detailed Diagnosis:**
+
+*   **Severe Bleaching:** The most prominent observation is the severe bleaching affecting primarily the branching corals (likely *Acropora* species). Numerous branches are completely devoid of color, appearing bright white, which signifies either total expulsion of zooxanthellae or recent mortality with subsequent tissue sloughing, leaving the skeleton exposed. This level of bleaching indicates extreme environmental stress, most commonly due to prolonged elevated sea temperatures.
+*   **Paling:** In addition to the stark white areas, there are regions where the coral tissue still retains some pigment but is noticeably pale. This "paling" is an early or moderate stage of bleaching, where the coral has begun to lose its zooxanthellae but has not yet reached the severe, complete expulsion seen in the white areas. These corals are under significant stress and are highly vulnerable to further degradation or mortality.
+*   **Evidence of Mortality/Tissue Loss:** The sheer whiteness of large coral sections suggests not just bleaching, but likely recent coral mortality, particularly in the foreground branching structures where the architecture is clearly visible as bare skeleton.
+*   **Algal Colonization:** Some of the exposed white skeleton, particularly on the tips and upper branches of the foreground corals, shows initial signs of greenish-brown algal colonization. This is a common post-mortality indicator, where opportunistic algae begin to colonize dead coral surfaces, further signaling the poor health and recent death of coral tissue in these areas.
+*   **Lack of Obvious Disease:** While the image clearly shows severe stress, there are no distinct visual signs of specific coral diseases (such as Black Band Disease, White Syndromes, or Skeletal Eroding Band) present in this particular frame. The primary health issue is systemic bleaching.
+*   **Overall Health Status:** The overall health of the coral reef ecosystem depicted in this image is critically poor. The extensive and severe bleaching indicates a major ecological disturbance, likely an ongoing or very recent thermal anomaly event. Without intervention or a significant decrease in environmental stressors, much of the severely bleached coral is at high risk of mortality, leading to a significant loss of live coral cover and a potential shift in the reef's ecological state.
