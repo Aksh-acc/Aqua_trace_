@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coral Bleach Detector - AR</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(90deg, #00d4ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.5rem;
+        }
+        .camera-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .video-container {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,212,255,0.3);
+        }
+        #video, #result-image {
+            max-width: 100%;
+            width: 640px;
+            height: auto;
+            display: block;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        .btn-capture {
+            background: linear-gradient(90deg, #00d4ff, #00ff88);
+            color: #1a1a2e;
+        }
+        .btn-capture:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0,212,255,0.5);
+        }
+        .btn-upload {
+            background: #2d3748;
+            color: white;
+            border: 2px solid #00d4ff;
+        }
+        .health-panel {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+        }
+        .health-score {
+            font-size: 3rem;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .status {
+            text-align: center;
+            font-size: 1.5rem;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .stat-card {
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .healthy { color: #00ff88; }
+        .bleached { color: #ffaa00; }
+        .dead { color: #ff4444; }
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #00d4ff;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .detection-list {
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 15px;
+        }
+        .detection-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px;
+            background: rgba(0,0,0,0.2);
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+        #file-input { display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐠 Coral Bleach Detector</h1>
+        
+        <div class="camera-section">
+            <div class="video-container">
+                <video id="video" autoplay playsinline></video>
+                <img id="result-image" style="display: none;">
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="btn-capture" onclick="captureAndAnalyze()">📸 Capture & Analyze</button>
+            <button class="btn-upload" onclick="document.getElementById('file-input').click()">📁 Upload Image</button>
+            <button class="btn-upload" onclick="showCamera()">🔄 New Capture</button>
+            <input type="file" id="file-input" accept="image/*" onchange="uploadImage(event)">
+        </div>
+        
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Analyzing coral health...</p>
+        </div>
+        
+        <div class="health-panel" id="results" style="display: none;">
+            <h2>🔬 Analysis Results</h2>
+            
+            <div class="health-score">
+                Health Score: <span id="health-score">--</span>/100
+            </div>
+            
+            <div class="status" id="status">--</div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value healthy" id="healthy-count">0</div>
+                    <div>Healthy Corals</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value bleached" id="bleached-count">0</div>
+                    <div>Bleached Corals</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value dead" id="dead-count">0</div>
+                    <div>Dead Corals</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="total-count">0</div>
+                    <div>Total Detected</div>
+                </div>
+            </div>
+            
+            <h3>Detections:</h3>
+            <div class="detection-list" id="detection-list"></div>
+        </div>
+    </div>
+    
+    <canvas id="canvas" style="display: none;"></canvas>
+    
+    <script>
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const resultImage = document.getElementById('result-image');
+        
+        // Start camera
+        async function startCamera() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: 'environment', width: 1280, height: 720 }
+                });
+                video.srcObject = stream;
+            } catch (err) {
+                alert('Camera access denied. Please enable camera permissions.');
+            }
+        }
+        
+        function showCamera() {
+            video.style.display = 'block';
+            resultImage.style.display = 'none';
+            document.getElementById('results').style.display = 'none';
+        }
+        
+        async function captureAndAnalyze() {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext('2d').drawImage(video, 0, 0);
+            
+            const imageData = canvas.toDataURL('image/jpeg', 0.9);
+            await analyzeImage(imageData);
+        }
+        
+        async function uploadImage(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = async (e) => {
+                await analyzeImage(e.target.result);
+            };
+            reader.readAsDataURL(file);
+        }
+        
+        async function analyzeImage(imageData) {
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('results').style.display = 'none';
+            
+            try {
+                const response = await fetch('/analyze', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ image_data: imageData })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Show annotated image
+                    video.style.display = 'none';
+                    resultImage.src = data.annotated_image;
+                    resultImage.style.display = 'block';
+                    
+                    // Update health panel
+                    const health = data.health_analysis;
+                    document.getElementById('health-score').textContent = health.health_score;
+                    document.getElementById('status').textContent = health.status;
+                    document.getElementById('healthy-count').textContent = health.healthy_count;
+                    document.getElementById('bleached-count').textContent = health.bleached_count;
+                    document.getElementById('dead-count').textContent = health.dead_count;
+                    document.getElementById('total-count').textContent = health.total_corals;
+                    
+                    // Show detections list
+                    const detectionList = document.getElementById('detection-list');
+                    detectionList.innerHTML = health.detections.map(d => 
+                        `<div class="detection-item">
+                            <span>${d.class}</span>
+                            <span>${d.confidence}%</span>
+                        </div>`
+                    ).join('');
+                    
+                    document.getElementById('results').style.display = 'block';
+                } else {
+                    alert('Analysis failed: ' + data.error);
+                }
+            } catch (err) {
+                alert('Error: ' + err.message);
+            }
+            
+            document.getElementById('loading').style.display = 'none';
+        }
+        
+        // Initialize
+        startCamera();
+    </script>
+</body>
+</html>
