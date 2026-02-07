@@ -1,0 +1,49 @@
+# Coral Bleach Detection Dataset (Coralscapes)
+path: c:\Users\modij\OneDrive\Desktop\coral_bleach_detector\dataset_yolo_seg
+train: images/train
+val: images/val
+
+# Number of classes
+nc: 39
+
+# Class names (YOLO class 0 = dataset class 1, etc.)
+names:
+  0: seagrass
+  1: trash
+  2: other coral dead
+  3: other coral bleached
+  4: sand
+  5: other coral alive
+  6: human
+  7: transect tools
+  8: fish
+  9: algae covered substrate
+  10: other animal
+  11: unknown hard substrate
+  12: background
+  13: dark
+  14: transect line
+  15: massive/meandering bleached
+  16: massive/meandering alive
+  17: rubble
+  18: branching bleached
+  19: branching dead
+  20: millepora
+  21: branching alive
+  22: massive/meandering dead
+  23: clam
+  24: acropora alive
+  25: sea cucumber
+  26: turbinaria
+  27: table acropora alive
+  28: sponge
+  29: anemone
+  30: pocillopora alive
+  31: table acropora dead
+  32: meandering bleached
+  33: stylophora alive
+  34: sea urchin
+  35: meandering alive
+  36: meandering dead
+  37: crown of thorn
+  38: dead clam
