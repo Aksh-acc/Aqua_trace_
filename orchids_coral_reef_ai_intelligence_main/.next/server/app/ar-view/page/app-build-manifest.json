@@ -1,0 +1,27 @@
+{
+  "pages": {
+    "/ar-view/page": [
+      "static/chunks/4577a_next_dist_8f81d8aa._.js",
+      "static/chunks/aec74_orchids-coral-reef-ai-intelligence-main_src_app_favicon_ico_mjs_ca62945e._.js",
+      "static/chunks/60ed5_detector_orchids-coral-reef-ai-intelligence-main_src_app_globals_3856d531.css",
+      "static/chunks/coral_bleach_detector_orchids-coral-reef-ai-intelligence-main_src_effaff64._.js",
+      "static/chunks/4577a_motion-dom_dist_es_ae1e33b7._.js",
+      "static/chunks/4577a_framer-motion_dist_es_7292e122._.js",
+      "static/chunks/4577a_tailwind-merge_dist_bundle-mjs_mjs_3f1dbf08._.js",
+      "static/chunks/4577a_de0040e3._.js",
+      "static/chunks/60ed5_detector_orchids-coral-reef-ai-intelligence-main_src_app_layout_tsx_6b7f7615._.js",
+      "static/chunks/aec74_orchids-coral-reef-ai-intelligence-main_src_app_global-error_tsx_25eb518f._.js",
+      "static/chunks/aec74_orchids-coral-reef-ai-intelligence-main_src_app_global-error_tsx_6c8c2b4b._.js",
+      "static/chunks/aec74_orchids-coral-reef-ai-intelligence-main_src_app_ar-view_page_tsx_c905fcbb._.js",
+      "static/chunks/4577a_cbc4d45f._.js",
+      "static/chunks/aec74_orchids-coral-reef-ai-intelligence-main_src_app_ar-view_page_tsx_6c8c2b4b._.js",
+      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_292d70b2._.js",
+      "static/chunks/4577a_next_dist_compiled_e1f06007._.js",
+      "static/chunks/4577a_next_dist_client_4b23ad37._.js",
+      "static/chunks/4577a_next_dist_77d93824._.js",
+      "static/chunks/4577a_@swc_helpers_cjs_6afa6cb7._.js",
+      "static/chunks/coral_bleach_detector_orchids-coral-reef-ai-intelligence-main_e69f0d32._.js",
+      "static/chunks/coral_bleach_detector_orchids-coral-reef-ai-intelligence-main_c6df4e71._.js"
+    ]
+  }
+}

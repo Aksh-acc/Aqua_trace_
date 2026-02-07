@@ -1,0 +1,9 @@
+{
+  "/agent/page": "app/agent/page.js",
+  "/api/agent-chat/route": "app/api/agent-chat/route.js",
+  "/api/noaa-data/route": "app/api/noaa-data/route.js",
+  "/api/sst-data/route": "app/api/sst-data/route.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/page": "app/page.js"
+}
