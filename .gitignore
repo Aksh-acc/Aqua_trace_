@@ -1,0 +1,22 @@
+# ML training outputs
+runs/
+__pycache__/
+*.pyc
+
+# Model artifacts
+*.pt
+*.onnx
+*.torchscript
+*.zip
+
+# Datasets
+datasets/
+NOAA_CORAL_DATASET/
+coralscapes*/data/
+
+# Node
+node_modules/
+.next/
+
+# Env & local
+.env*
