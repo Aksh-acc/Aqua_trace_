@@ -1,22 +1,45 @@
+# ========================
 # ML training outputs
+# ========================
 runs/
+wandb/
+logs/
+outputs/
+checkpoints/
+
+# Python
 __pycache__/
 *.pyc
 
+# ========================
 # Model artifacts
+# ========================
 *.pt
 *.onnx
 *.torchscript
 *.zip
 
-# Datasets
+# ========================
+# Training cache files
+# ========================
+*.cache
+dataset_yolo_seg/**/*.cache
+
+# ========================
+# Datasets (never commit)
+# ========================
 datasets/
 NOAA_CORAL_DATASET/
 coralscapes*/data/
 
-# Node
+# ========================
+# Node / Next.js
+# ========================
 node_modules/
 .next/
+.next/cache/
 
-# Env & local
+# ========================
+# Environment / local
+# ========================
 .env*
